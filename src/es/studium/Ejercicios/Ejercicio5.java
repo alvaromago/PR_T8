@@ -16,7 +16,7 @@ public class Ejercicio5
 			// Abrir fichero
 			System.out.println("Dame el nombre del primer fichero: ");
 			String fichero1 = t.nextLine();
-			System.out.println("Dame el nombre del primer fichero: ");
+			System.out.println("Dame el nombre del segundo fichero: ");
 			String fichero2 = t.nextLine();
 			FileReader fr1 = new FileReader(fichero1);
 			FileReader fr2 = new FileReader(fichero2);
