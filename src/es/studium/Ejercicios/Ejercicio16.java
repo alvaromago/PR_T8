@@ -1,0 +1,39 @@
+package es.studium.Ejercicios;
+
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
+public class Ejercicio16
+{
+
+	public static void main(String[] args)
+	{
+		Scanner t = new Scanner(System.in);
+		int numeros[] = new int[10];
+		for(int i = 0; i < numeros.length; i++)
+		{
+			System.out.println("Dame el numero " + (i+1) + ":");
+			numeros[i] = t.nextInt();
+		}
+		t.close();
+		try
+		{
+			FileOutputStream fos = new FileOutputStream("tabla2.dat");
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			ObjectOutputStream salidaB = new ObjectOutputStream(bos);
+			salidaB.writeObject(numeros);
+			salidaB.close();
+			bos.close();
+			fos.close();
+			System.out.println("Información guardada con éxito");
+		}
+		catch(IOException ioe)
+		{
+			System.out.println("Error en el fichero");
+		}
+	}
+
+}

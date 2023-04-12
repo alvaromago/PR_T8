@@ -1,13 +1,13 @@
 package es.studium.Ejercicios;
 
 import java.io.BufferedInputStream;
-import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 
-public class Ejercicio15
+public class Ejercicio16_2
 {
 
 	public static void main(String[] args)
@@ -22,11 +22,8 @@ public class Ejercicio15
 		{
 			FileInputStream fis = new FileInputStream(nombreFichero);
 			BufferedInputStream bis = new BufferedInputStream(fis);
-			DataInputStream entradaB = new DataInputStream(bis);
-			for(int i = 0; i < numeros.length; i++)
-			{
-				numeros[i] = entradaB.readInt();
-			}
+			ObjectInputStream entradaB = new ObjectInputStream(bis);
+			numeros = (int[]) entradaB.readObject();
 			entradaB.close();
 			bis.close();
 			fis.close();
@@ -43,6 +40,9 @@ public class Ejercicio15
 		{
 			System.out.println("Error en el fichero");
 		}
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("Error de casting" + e.getMessage());
+		}
 	}
-
 }
